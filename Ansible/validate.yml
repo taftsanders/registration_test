@@ -1,0 +1,15 @@
+---
+- name: Validate client registration
+  hosts: client
+  tasks:
+  - name: Confirm registration certs exist
+    stat:
+      path: /etc/pki/consumer/cert.pem
+    register: registration_result
+
+  - name: Confirm subscripton certs exist
+    stat:
+      path: /etc/pki/entitlement/*.pem
+    register: subscribed_result
+
+  - name: Validate 
